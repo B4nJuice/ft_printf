@@ -6,13 +6,13 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 07:39:07 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 10:45:40 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:06:54 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_type_p(va_list arg_ptr, int *count, int mode)
+void	ft_type_p(va_list arg_ptr, int *count)
 {
 	uintptr_t	address;
 	char		*hex_address;
@@ -20,11 +20,9 @@ void	ft_type_p(va_list arg_ptr, int *count, int mode)
 	address = va_arg(arg_ptr, uintptr_t);
 	if (!address)
 	{
-		*count = -1;
+		*count = write(1, &"(nil)", 5);
 		return ;
 	}
-	if (!mode)
-		return ;
 	hex_address = ft_ptrtohex(address, "0123456789abcdef");
 	write(1, &"0x", 2);
 	*count += ft_strlen(hex_address) + 2;

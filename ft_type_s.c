@@ -6,13 +6,13 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:39:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 10:40:41 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:07:50 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_type_s(va_list arg_ptr, int *count, int mode)
+void	ft_type_s(va_list arg_ptr, int *count)
 {
 	char	*s;
 	size_t	size;
@@ -20,13 +20,10 @@ void	ft_type_s(va_list arg_ptr, int *count, int mode)
 	s = va_arg(arg_ptr, char *);
 	if (!s)
 	{
-		*count = -1;
+		*count = write(1, &"(null)", 6);
 		return ;
 	}
-	if (mode)
-	{
-		size = ft_strlen(s);
-		*count += size;
-		write(1, s, size);
-	}
+	size = ft_strlen(s);
+	*count += size;
+	write(1, s, size);
 }

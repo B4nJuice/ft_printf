@@ -6,13 +6,13 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 10:48:11 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:05:42 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	percent_type(const char *str, va_list arg_ptr, int *count, int mode);
+int	percent_type(const char *str, va_list arg_ptr, int *count);
 
 int	ft_printf(const char *str, ...)
 {
@@ -22,23 +22,12 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;
 	i = 0;
-	va_start(arg_ptr, str);
+	if (!str)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i += 2 + percent_type(str + i, arg_ptr, &count, 0);
-		else
-			i++;
-		if (count < 0)
-			return (count);
-	}
-	i = 0;
-	va_end(arg_ptr);
-	va_start(arg_ptr, str);
-	while (str[i])
-	{
-		if (str[i] == '%')
-			i += 2 + percent_type(str + i, arg_ptr, &count, 1);
+			i += 2 + percent_type(str + i, arg_ptr, &count);
 		else
 		{
 			ft_putchar_fd(str[i], 1);
@@ -49,33 +38,30 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-int	percent_type(const char *str, va_list arg_ptr, int *count, int mode)
+int	percent_type(const char *str, va_list arg_ptr, int *count)
 {
 	int	i;
 
 	i = 0;
 	str++;
 	if (*str == 'c')
-		ft_type_c(arg_ptr, count, mode);
+		ft_type_c(arg_ptr, count);
 	else if (*str == 's')
-		ft_type_s(arg_ptr, count, mode);
+		ft_type_s(arg_ptr, count);
 	else if (*str == 'i' || *str == 'd')
-		ft_type_i(arg_ptr, count, mode);
+		ft_type_i(arg_ptr, count);
 	else if (*str == 'p')
-		ft_type_p(arg_ptr, count, mode);
+		ft_type_p(arg_ptr, count);
 	else if (*str == 'x' || *str == 'X')
-		ft_type_x(arg_ptr, *str, count, mode);
+		ft_type_x(arg_ptr, *str, count);
 	else if (*str == 'u')
-		ft_type_u(arg_ptr, count, mode);
+		ft_type_u(arg_ptr, count);
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '%')
 	{
-		if (mode)
-		{
 			write(1, &"%", 1);
 			*count += 1;
-		}
 		return (i);
 	}
 	return (0);
