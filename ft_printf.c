@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:11:18 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:48:57 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_printf(const char *str, ...)
 			i++;
 			count++;
 		}
+		if (count < 0)
+			return (count);
 	}
 	return (count);
 }

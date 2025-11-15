@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:38:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:07:30 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:59:43 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ void	ft_type_x(va_list arg_ptr, char c, int *count)
 	char	*converted;
 
 	nb = va_arg(arg_ptr, unsigned int);
-	if (c == 'x')
+	if (nb == 0)
+		converted = ft_itoa(nb);
+	else if (c == 'x')
 		converted = ft_itobase(nb, "0123456789abcdef");
 	else
 		converted = ft_itobase(nb, "0123456789ABCDEF");
 	if (!converted)
+	{
+		*count = -1;
 		return ;
-	*count += ft_strlen(converted);
-	ft_putstr_fd (converted, 1);
+	}
+	*count += write(1, converted, ft_strlen(converted));
 	free (converted);
 }

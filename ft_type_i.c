@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:00:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:07:46 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:49:29 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 void	ft_type_i(va_list arg_ptr, int *count)
 {
-	int	nb;
-	int	nb2;
+	int		nb;
+	int		nb2;
+	char	*output;
 
 	nb = va_arg(arg_ptr, int);
 	nb2 = nb;
-	if (nb < 0)
-		*count += 1;
-	while (nb2 != 0)
+	output = ft_itoa(nb);
+	if (!output)
 	{
-		nb2 /= 10;
-		*count += 1;
+		*count = -1;
+		return ;
 	}
-	ft_putnbr_fd(nb, 1);
+	*count += write(1, output, ft_strlen(output));
+	free (output);
 }
