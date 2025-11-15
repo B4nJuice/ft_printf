@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/15 14:48:35 by lgirard          ###   ########.fr        #
+#    Updated: 2025/11/15 15:09:32 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ ${LIBFT}:
 
 ${NAME} : all
 
-%.o : %.c Makefile includes/ft_printf.h
+%.o : %.c Makefile ft_printf.h
 	${CC} ${CFLAGS} $< -o $@
 
 .PHONY : all clean fclean re libft
