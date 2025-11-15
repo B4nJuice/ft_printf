@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:48:57 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 15:10:53 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	percent_type(const char *str, va_list arg_ptr, int *count)
 		i++;
 	if (str[i] == '%')
 	{
-			write(1, &"%", 1);
-			*count += 1;
+		write(1, &"%", 1);
+		*count += 1;
 		return (i);
 	}
 	return (0);
