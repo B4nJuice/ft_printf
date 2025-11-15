@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:05:42 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/15 14:11:18 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	if (!str)
 		return (-1);
+	va_start(arg_ptr, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
