@@ -6,14 +6,14 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/18 14:41:02 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/19 09:01:32 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		percent_type(const char *str, va_list arg_ptr, int *count, t_flags flags);
-t_flags	get_flags(const char c);
+int		percent_type(const char *str, va_list arg_ptr, int *count,
+			t_flags flags);
 
 int	ft_printf(const char *str, ...)
 {
@@ -29,7 +29,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i += 2 + percent_type(str + i, arg_ptr, &count, get_flags(str[i]));
+			i += 2 + percent_type(str + i, arg_ptr, &count, get_flags(str, &i));
 		else
 		{
 			ft_putchar_fd(str[i], 1);
@@ -69,18 +69,4 @@ int	percent_type(const char *str, va_list arg_ptr, int *count, t_flags flags)
 		return (i);
 	}
 	return (0);
-}
-
-t_flags	get_flags(const char c)
-{
-	t_flags *flags_struct;
-	int	flags;
-
-	flags = 1;
-	if (c == "#")
-		flags = 2;
-	if (flags == 1)
-		flags = 0;
-	flags_struct->flags = flags;
-	return (*flags_struct);
 }

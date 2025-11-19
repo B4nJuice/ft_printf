@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/15 15:09:32 by lgirard          ###   ########.fr        #
+#    Updated: 2025/11/19 09:46:31 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ ft_type_i.c \
 ft_type_p.c \
 ft_type_s.c \
 ft_type_u.c \
-ft_type_x.c
+ft_type_x.c \
+flags.c \
+flags_utils.c
 
 OBJ = ${SRCS:.c=.o}
 
