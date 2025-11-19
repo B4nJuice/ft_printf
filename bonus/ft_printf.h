@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:27:25 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 09:47:45 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/19 13:14:44 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include "../libft/libft.h"
-
-int		ft_printf(const char *str, ...);
 
 /*
 	Var type functions
@@ -43,15 +41,23 @@ char	*ft_itobase(unsigned int nb, char *base);
 
 typedef struct s_flags
 {
-	int	*flags_int;
-	int *widht;
-	int	*string_widht;
+	int	flags_int;
+	int	widht;
+	int	string_widht;
 }	t_flags;
 
 int		is_type(char c);
-t_flags	get_flags(char *str, int *i);
-int		flags_atoi(char *str, int *index);
-void	mult_flags(char *str, int *flags_int, int *index,
-		t_flags *flags_struct);
+t_flags	get_flags(const char *str, int *i);
+int		is_only_space(const char *str, int index);
+int		flags_atoi(const char *str, int *index, int gap);
+void	mult_flags(const char *str, int *flags_int, int *index);
+
+/*
+	Core functions
+*/
+
+int		ft_printf(const char *str, ...);
+int		percent_type(t_flags flags, va_list arg_ptr, int *count,
+			const char *str);
 
 #endif

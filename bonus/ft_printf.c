@@ -6,14 +6,11 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 09:01:32 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/19 13:21:29 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		percent_type(const char *str, va_list arg_ptr, int *count,
-			t_flags flags);
 
 int	ft_printf(const char *str, ...)
 {
@@ -29,7 +26,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i += 2 + percent_type(str + i, arg_ptr, &count, get_flags(str, &i));
+			i += 2 + percent_type(get_flags(str, &i), arg_ptr, &count, str + i);
 		else
 		{
 			ft_putchar_fd(str[i], 1);
@@ -42,7 +39,7 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-int	percent_type(const char *str, va_list arg_ptr, int *count, t_flags flags)
+int	percent_type(t_flags flags, va_list arg_ptr, int *count, const char *str)
 {
 	int	i;
 
