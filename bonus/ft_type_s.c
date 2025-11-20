@@ -6,24 +6,35 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:39:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:14:11 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:01:35 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_type_s(va_list arg_ptr, int *count)
+void	ft_type_s(va_list arg_ptr, int *count, t_flags flags)
 {
 	char	*s;
-	size_t	size;
+	int		len;
 
 	s = va_arg(arg_ptr, char *);
 	if (!s)
 	{
-		*count += write(1, &"(null)", 6);
+		if (!(flags.flags_int % MOD_POINT))
+			len = 0;
+		else
+			len = 6;
+		if ((flags.widht != -1 && flags.flags_int % MOD_DASH))
+			ft_swrite(count, ft_fill(' ', flags.widht - len));
+		ft_swrite(count, write(1, &"(null)", len));
+		if (!(flags.flags_int % MOD_DASH))
+			ft_swrite(count, ft_fill(' ', flags.widht - len));
 		return ;
 	}
-	size = ft_strlen(s);
-	*count += size;
-	write(1, s, size);
+	len = ft_min(ft_strlen(s), flags.string_widht);
+	if ((flags.widht != -1 && flags.flags_int % MOD_DASH))
+		ft_swrite(count, ft_fill(' ', flags.widht - len));
+	ft_swrite(count, write(1, s, len));
+	if (!(flags.flags_int % MOD_DASH))
+		ft_swrite(count, ft_fill(' ', flags.widht - len));
 }

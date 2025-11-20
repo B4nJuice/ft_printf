@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/20 10:12:47 by lgirard          ###   ########.fr        #
+#    Updated: 2025/11/20 11:52:59 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ ft_ptrtohex.c \
 flags_utils.c \
 ft_type_i_2.c \
 ft_type_p_2.c \
+ft_type_x_2.c \
 ft_itobase.c \
 ft_type_c.c \
 ft_type_i.c \
@@ -63,6 +64,8 @@ fclean : clean
 re : fclean all
 
 libft : ${LIBFT}
+
+bonus : all
 
 ${LIBFT}:
 	make -C $(LIBFT_PATH) all

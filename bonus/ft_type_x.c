@@ -6,16 +6,17 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:38:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/15 14:59:43 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 11:45:34 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_type_x(va_list arg_ptr, char c, int *count)
+void	ft_type_x(va_list arg_ptr, char c, int *count, t_flags flags)
 {
 	int		nb;
 	char	*converted;
+	int		len;
 
 	nb = va_arg(arg_ptr, unsigned int);
 	if (nb == 0)
@@ -29,6 +30,17 @@ void	ft_type_x(va_list arg_ptr, char c, int *count)
 		*count = -1;
 		return ;
 	}
-	*count += write(1, converted, ft_strlen(converted));
+	len = ft_strlen(converted) + (!(flags.flags_int % MOD_SHARP) && nb > 0) * 2;
+	if (flags.flags_int % MOD_ZERO && flags.flags_int % MOD_DASH)
+		ft_swrite(count, ft_fill(' ', flags.widht - len - (flags.string_widht - len) * !(flags.flags_int % MOD_POINT)));
+	if (!(flags.flags_int % MOD_SHARP) && nb > 0)
+		ft_swrite(count, ft_add_hex_prefix(c));
+	if (!(flags.flags_int % MOD_POINT))
+		ft_swrite(count, ft_fill('0', flags.string_widht - len));
+	if (!(flags.flags_int % MOD_ZERO) && flags.flags_int % MOD_POINT)
+		ft_swrite(count, ft_fill('0', flags.widht - len));
+	ft_swrite(count, write(1, converted, ft_strlen(converted)));
+	if (!(flags.flags_int % MOD_DASH))
+		ft_swrite(count, ft_fill(' ', flags.widht - len));
 	free (converted);
 }

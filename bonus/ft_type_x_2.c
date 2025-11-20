@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_type_x_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 09:05:07 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 11:28:29 by lgirard          ###   ########.fr       */
+/*   Created: 2025/11/20 11:28:43 by lgirard           #+#    #+#             */
+/*   Updated: 2025/11/20 11:28:51 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_swrite(int *count, int temp)
+int	ft_add_hex_prefix(char c)
 {
-	*count = *count * (*count > -1) + temp * (*count > -1);
+	int	count;
+
+	count = 0;
+	ft_swrite(&count, write(1, &"0", 1));
+	ft_swrite(&count, write(1, &c, 1));
+	return (count);
 }
