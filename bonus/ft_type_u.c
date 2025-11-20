@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:38:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 09:26:55 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 10:13:33 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_type_u(va_list arg_ptr, int *count, t_flags flags)
 		*count = -1;
 		return ;
 	}
-	len = ft_min(ft_strlen(converted), flags.widht);
-	check_write_fail(count ,ft_write_i(converted, len, flags));
+	len = ft_strlen(converted);
+	ft_swrite(count, ft_write_i(converted, len, flags));
 	if (!(flags.flags_int % MOD_DASH))
-		check_write_fail(count, ft_fill(' ', flags.widht - len));
+		ft_swrite(count, ft_fill(' ', flags.widht - len));
 	free (converted);
 }

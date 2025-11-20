@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 09:15:35 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 10:03:40 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int	ft_printf(const char *str, ...)
 			i += 2 + percent_type(get_flags(str, &i), arg_ptr, &count, str + i);
 		else
 		{
-			ft_putchar_fd(str[i], 1);
+			ft_swrite(&count, write(1, &str[i], 1));
 			i++;
-			count++;
 		}
 		if (count < 0)
 			return (count);
@@ -52,7 +51,7 @@ int	percent_type(t_flags flags, va_list arg_ptr, int *count, const char *str)
 	else if (*str == 'i' || *str == 'd')
 		ft_type_i(arg_ptr, count, flags);
 	else if (*str == 'p')
-		ft_type_p(arg_ptr, count);
+		ft_type_p(arg_ptr, count, flags);
 	else if (*str == 'x' || *str == 'X')
 		ft_type_x(arg_ptr, *str, count);
 	else if (*str == 'u')
@@ -61,8 +60,7 @@ int	percent_type(t_flags flags, va_list arg_ptr, int *count, const char *str)
 		i++;
 	if (str[i] == '%')
 	{
-		write(1, &"%", 1);
-		*count += 1;
+		ft_swrite(count, write(1, &"%", 1));
 		return (i);
 	}
 	return (0);

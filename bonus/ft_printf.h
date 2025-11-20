@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:27:25 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 09:15:28 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 10:13:53 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		percent_type(t_flags flags, va_list arg_ptr, int *count,\
 void	ft_type_c(va_list arg_ptr, int *count);
 void	ft_type_s(va_list arg_ptr, int *count);
 void	ft_type_i(va_list arg_ptr, int *count, t_flags flags);
-void	ft_type_p(va_list arg_ptr, int *count);
+void	ft_type_p(va_list arg_ptr, int *count, t_flags flags);
 void	ft_type_u(va_list arg_ptr, int *count, t_flags flags);
 void	ft_type_x(va_list arg_ptr, char c, int *count);
 
@@ -58,9 +58,10 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*ft_add_plus(char *src);
 int		ft_fill(char c, int len);
-void	check_write_fail(int *count, int temp);
+void	ft_swrite(int *count, int temp);
 char	*ft_ptrtohex(uintptr_t nb, char *base);
 char	*ft_itobase(unsigned int nb, char *base);
+int		ft_write_p(char *str, t_flags flags, int len);
 int		ft_write_i(char *output, int len, t_flags flags);
 int		fill_point_zero_a(char *output, int i, t_flags flags, int len);
 int		fill_point_zero_b(char *output, int i, t_flags flags, int len);
