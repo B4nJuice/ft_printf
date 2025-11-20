@@ -6,14 +6,11 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:00:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 15:12:43 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 08:15:21 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_add_plus(char *src);
-int		ft_write_i(char *output, int len, t_flags flags);
 
 void	ft_type_i(va_list arg_ptr, int *count, t_flags flags)
 {
@@ -44,55 +41,3 @@ void	ft_type_i(va_list arg_ptr, int *count, t_flags flags)
 	free (output);
 }
 
-int	ft_write_i(char *output, int len, t_flags flags)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (output[i])
-	{
-		if (i == 0 && !(flags.flags_int % MOD_POINT)
-			&& (output[i] != '+' && output[i] != '-'))
-			count += ft_fill('0', flags.string_widht - len);
-		else if (i == 0 && !(flags.flags_int % MOD_ZERO)
-			&& (output[i] != '+' && output[i] != '-'))
-			count += ft_fill('0', flags.widht - len);
-		ft_putchar_fd (output[i], 1);
-		if (i == 0 && !(flags.flags_int % MOD_POINT)
-			&& (output[i] == '+' || output[i] == '-'))
-			count += ft_fill('0', flags.string_widht - len + 1);
-		else if (i == 0 && !(flags.flags_int % MOD_ZERO)
-			&& (output[i] == '+' || output[i] == '-'))
-			count += ft_fill('0', flags.widht - len);
-		count++;
-		i++;
-	}
-	return (count);
-}
-
-char	*ft_add_plus(char *src)
-{
-	char	*output;
-	int		i;
-	int		len;
-
-	i = 1;
-	len = ft_strlen(src);
-	output = malloc (len + 2);
-	if (!output)
-	{
-		free (src);
-		return (NULL);
-	}
-	output[0] = '+';
-	while (i < len + 1)
-	{
-		output[i] = src[i - 1];
-		i++;
-	}
-	free (src);
-	output[i] = 0;
-	return (output);
-}

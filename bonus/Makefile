@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/19 13:59:59 by lgirard          ###   ########.fr        #
+#    Updated: 2025/11/20 08:16:22 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -c -Wall -Wextra -I./includes -I./libft
 SRCS = ft_printf.c \
 ft_ptrtohex.c \
 flags_utils.c \
+ft_type_i_2.c \
 ft_itobase.c \
 ft_type_c.c \
 ft_type_i.c \

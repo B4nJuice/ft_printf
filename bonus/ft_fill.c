@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:52:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 15:10:21 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 07:59:44 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_fill(char c, int len)
 	i = 0;
 	while (i < len)
 	{
-		write (1, &c, 1);
+		if (write (1, &c, 1) < 0)
+			return (-1);
 		i++;
 	}
 	return (len);
