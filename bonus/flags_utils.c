@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:45:58 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 15:10:44 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:06:02 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_type(char c)
 {
 	return (c == 'c' || c == 'i' || c == 'd' || c == 'p'
-		|| c == 's' || c == 'u' || c == 'x' || c == 'X');
+		|| c == 's' || c == 'u' || c == 'x' || c == 'X' || c == '%');
 }
 
 int	flags_atoi(const char *str, int *index, int gap)

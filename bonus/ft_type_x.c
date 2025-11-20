@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:38:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 11:45:34 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 13:20:06 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_type_x(va_list arg_ptr, char c, int *count, t_flags flags)
 	}
 	len = ft_strlen(converted) + (!(flags.flags_int % MOD_SHARP) && nb > 0) * 2;
 	if (flags.flags_int % MOD_ZERO && flags.flags_int % MOD_DASH)
-		ft_swrite(count, ft_fill(' ', flags.widht - len - (flags.string_widht - len) * !(flags.flags_int % MOD_POINT)));
+		ft_swrite(count, ft_fill(' ', flags.widht - len - (flags.string_widht - len) * (!(flags.flags_int % MOD_POINT) && flags.string_widht >= len)));
 	if (!(flags.flags_int % MOD_SHARP) && nb > 0)
 		ft_swrite(count, ft_add_hex_prefix(c));
 	if (!(flags.flags_int % MOD_POINT))

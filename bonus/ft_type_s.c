@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:39:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 12:01:35 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 12:34:49 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_type_s(va_list arg_ptr, int *count, t_flags flags)
 	s = va_arg(arg_ptr, char *);
 	if (!s)
 	{
-		if (!(flags.flags_int % MOD_POINT))
+		if (!(flags.flags_int % MOD_POINT) && flags.string_widht < 6)
 			len = 0;
 		else
 			len = 6;
