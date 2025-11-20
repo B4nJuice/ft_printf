@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 13:28:34 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 09:15:35 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	percent_type(t_flags flags, va_list arg_ptr, int *count, const char *str)
 	else if (*str == 'x' || *str == 'X')
 		ft_type_x(arg_ptr, *str, count);
 	else if (*str == 'u')
-		ft_type_u(arg_ptr, count);
+		ft_type_u(arg_ptr, count, flags);
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '%')
