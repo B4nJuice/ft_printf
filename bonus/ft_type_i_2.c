@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 08:14:12 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 08:15:26 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 09:08:27 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	fill_point_zero_b(char *output, int i, t_flags flags, int len)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (i == 0 && !(flags.flags_int % MOD_POINT)
@@ -28,12 +28,12 @@ int	fill_point_zero_b(char *output, int i, t_flags flags, int len)
 
 int	fill_point_zero_a(char *output, int i, t_flags flags, int len)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (i == 0 && !(flags.flags_int % MOD_POINT)
 		&& (output[i] == '+' || output[i] == '-'))
-		count += ft_fill('0', flags.string_widht - len);
+		count += ft_fill('0', flags.string_widht - len + 1);
 	else if (i == 0 && !(flags.flags_int % MOD_ZERO)
 		&& (output[i] == '+' || output[i] == '-'))
 		count += ft_fill('0', flags.widht - len);
@@ -58,6 +58,7 @@ int	ft_write_i(char *output, int len, t_flags flags)
 		temp = write (1, &output[i], 1);
 		if (temp < 0)
 			return (-1);
+		count += temp;
 		temp = fill_point_zero_a(output, i, flags, len);
 		if (temp < 0)
 			return (-1);

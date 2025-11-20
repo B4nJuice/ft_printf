@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill.c                                          :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 13:52:54 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 08:27:54 by lgirard          ###   ########.fr       */
+/*   Created: 2025/11/20 09:05:07 by lgirard           #+#    #+#             */
+/*   Updated: 2025/11/20 09:08:09 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_fill(char c, int len)
+void	check_write_fail(int *count, int temp)
 {
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (write (1, &c, 1) < 0)
-			return (-1);
-		i++;
-	}
-	return (i);
+	*count = *count * (*count > -1) + temp * (*count > -1);
 }

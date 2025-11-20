@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:27:25 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 08:15:10 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/20 09:08:48 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_flags
 */
 
 int		ft_printf(const char *str, ...);
-int		percent_type(t_flags flags, va_list arg_ptr, int *count,
-			const char *str);
+int		percent_type(t_flags flags, va_list arg_ptr, int *count,\
+		const char *str);
 
 /*
 	Var type functions
@@ -54,9 +54,11 @@ void	ft_type_x(va_list arg_ptr, char c, int *count);
 	Utils
 */
 
+int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*ft_add_plus(char *src);
 int		ft_fill(char c, int len);
+void	check_write_fail(int *count, int temp);
 char	*ft_ptrtohex(uintptr_t nb, char *base);
 char	*ft_itobase(unsigned int nb, char *base);
 int		ft_write_i(char *output, int len, t_flags flags);
