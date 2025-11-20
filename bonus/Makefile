@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/19 10:11:04 by lgirard          ###   ########.fr        #
+#    Updated: 2025/11/19 13:59:59 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,18 @@ CC = cc
 CFLAGS = -c -Wall -Wextra -I./includes -I./libft
 
 SRCS = ft_printf.c \
-ft_itobase.c \
 ft_ptrtohex.c \
+flags_utils.c \
+ft_itobase.c \
 ft_type_c.c \
 ft_type_i.c \
 ft_type_p.c \
 ft_type_s.c \
 ft_type_u.c \
 ft_type_x.c \
-flags.c \
-flags_utils.c
+ft_fill.c \
+ft_min.c \
+flags.c
 
 OBJ = ${SRCS:.c=.o}
 

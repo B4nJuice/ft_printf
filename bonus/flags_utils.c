@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:45:58 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/19 13:14:27 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/19 15:10:44 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,25 @@ void	mult_flags(const char *str, int *flags_int, int *index)
 	char	c;
 
 	c = str[*index];
-	if (c == '-' && *flags_int % 2 != 0)
+	if (c == '-' && *flags_int % MOD_DASH != 0)
 	{
-		if (*flags_int % 3 == 0)
-			*flags_int /= 3;
-		*flags_int *= 2;
+		if (*flags_int % MOD_ZERO == 0)
+			*flags_int /= MOD_ZERO;
+		*flags_int *= MOD_DASH;
 	}
-	else if (c == '0'&& *flags_int % 3 != 0)
+	else if (c == '0' && *flags_int % MOD_ZERO != 0)
 	{
-		if (*flags_int % 2 != 0)
-			*flags_int *= 3;
+		if (*flags_int % MOD_DASH != 0)
+			*flags_int *= MOD_ZERO;
 	}
-	else if (c == '.'&& *flags_int % 5 != 0)
-		*flags_int *= 5;
-	else if (c == '#'&& *flags_int % 7 != 0)
-		*flags_int *= 7;
-	else if (c == ' '&& *flags_int % 11 != 0)
-		*flags_int *= 11;
-	else if (c == '+'&& *flags_int % 13 != 0)
-		*flags_int *= 13;
+	else if (c == '.' && *flags_int % MOD_POINT != 0)
+		*flags_int *= MOD_POINT;
+	else if (c == '#' && *flags_int % MOD_SHARP != 0)
+		*flags_int *= MOD_SHARP;
+	else if (c == ' ' && *flags_int % MOD_SPACE != 0)
+		*flags_int *= MOD_SPACE;
+	else if (c == '+' && *flags_int % MOD_PLUS != 0)
+		*flags_int *= MOD_PLUS;
 }
 
 int	is_only_space(const char *str, int index)
