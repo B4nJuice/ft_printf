@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:00:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 13:12:11 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/26 12:09:23 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_type_i(va_list arg_ptr, int *count, t_flags flags)
 		return ;
 	}
 	len = ft_strlen(output);
+	if (!(flags.flags_int % MOD_POINT) && flags.string_widht <= 0)
+		len = 0;
 	// len += (!(flags.flags_int % MOD_SPACE) && nb >= 0);
 	// len += (!(flags.flags_int % MOD_PLUS) && nb >= 0);
 	if (!(flags.flags_int % MOD_SPACE) && nb >= 0)

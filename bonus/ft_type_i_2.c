@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 08:14:12 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 09:08:27 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/11/26 12:08:51 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_write_i(char *output, int len, t_flags flags)
 	i = 0;
 	count = 0;
 	temp = 0;
+	if (!(flags.flags_int % MOD_POINT) && flags.string_widht <= 0)
+		return (0);
 	while (output[i])
 	{
 		temp = fill_point_zero_b(output, i, flags, len);
