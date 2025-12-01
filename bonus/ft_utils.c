@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:05:07 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 11:28:29 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/12/01 15:47:41 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 void	ft_swrite(int *count, int temp)
 {
-	*count = *count * (*count > -1) + temp * (*count > -1);
+	if (*count == -1 || temp == -1)
+	{
+		*count = -1;
+		return ;
+	}
+	*count += temp;
 }
