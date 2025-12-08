@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:00:57 by lgirard           #+#    #+#             */
-/*   Updated: 2025/12/01 14:41:28 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/12/08 12:52:45 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	ft_type_i(va_list arg_ptr, int *count, t_flags flags)
 		*count = -1;
 		return ;
 	}
-	len = ft_strlen(output);
-	if (!(flags.flags_int % MOD_POINT) && (flags.string_widht < 0 || (flags.string_widht <= 0 && nb == 0)))
-		len = 0;
+	len = ft_strlen(output) * !(!(flags.flags_int % MOD_POINT)
+			&& (flags.string_widht < 0 || (flags.string_widht <= 0 && !nb)));
 	if (!(flags.flags_int % MOD_SPACE) && nb >= 0)
 		ft_swrite(count, write(1, " ", 1));
-	if ((flags.flags_int % MOD_ZERO || !(flags.flags_int % MOD_POINT)) && flags.flags_int % MOD_DASH)
-		ft_swrite(count, ft_fill(' ', flags.widht - len - ((!(flags.flags_int % MOD_SPACE) + !(flags.flags_int % MOD_PLUS)) * (nb >= 0)) - (flags.string_widht + (nb < 0) - len) * !(flags.flags_int % MOD_POINT) * (flags.string_widht >= len)));
+	if ((flags.flags_int % MOD_ZERO || !(flags.flags_int % MOD_POINT))
+		&& flags.flags_int % MOD_DASH)
+		ft_swrite(count, ft_fill(' ', zero_point_dash_fill(nb, flags, len)));
 	ft_swrite(count, ft_write_i(output, len, flags));
 	if (!(flags.flags_int % MOD_DASH))
-		ft_swrite(count, ft_fill(' ', flags.widht - len - ((!(flags.flags_int % MOD_SPACE) + !(flags.flags_int % MOD_PLUS)) * (nb >= 0)) - (flags.string_widht + (nb < 0) - len) * !(flags.flags_int % MOD_POINT) * (flags.string_widht >= len)));
+		ft_swrite(count, ft_fill(' ', zero_point_dash_fill(nb, flags, len)));
 	free (output);
 }

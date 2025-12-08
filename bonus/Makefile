@@ -6,13 +6,13 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/11/20 11:52:59 by lgirard          ###   ########.fr        #
+#    Updated: 2025/12/08 12:31:12 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -c -Wall -Wextra -I./includes -I./libft
+CFLAGS = -c -Wall -Wextra -Werror -I./includes -I./libft
 
 SRCS = ft_printf.c \
 ft_ptrtohex.c \
@@ -43,15 +43,6 @@ LIBFT = $(LIBFT_PATH)/libft.a
 all : ${OBJ} ${LIBFT}
 	cp ${LIBFT} ${NAME}
 	ar rcs ${NAME} ${OBJ}
-	@echo
-	@echo
-	@echo
-	@echo
-	@echo
-	@echo
-	@echo PENSE A REMETTRE LE FLAG WERROR
-	@echo PENSE A REMETTRE LE FLAG WERROR
-	@echo PENSE A REMETTRE LE FLAG WERROR
 
 clean :
 	make -C $(LIBFT_PATH) clean

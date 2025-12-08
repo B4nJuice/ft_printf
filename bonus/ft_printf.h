@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:27:25 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 11:51:52 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/12/08 12:52:58 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ char	*ft_ptrtohex(uintptr_t nb, char *base);
 char	*ft_itobase(unsigned int nb, char *base);
 int		ft_write_p(char *str, t_flags flags, int len);
 int		ft_write_i(char *output, int len, t_flags flags);
+int		dash_zero_fill(int len, t_flags flags, int mode);
+int		zero_point_dash_fill(int nb, t_flags flags, int len);
+int		ft_write_x(int len, t_flags flags, unsigned int nb, char c);
 int		fill_point_zero_a(char *output, int i, t_flags flags, int len);
 int		fill_point_zero_b(char *output, int i, t_flags flags, int len);
 
