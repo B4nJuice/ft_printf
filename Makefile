@@ -6,13 +6,13 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/12/09 10:44:50 by lgirard          ###   ########.fr        #
+#    Updated: 2025/12/09 11:17:41 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -c -Wall -Wextra -Werror -I./includes -I./libft
+CFLAGS = -c -Wall -Wextra -Werror
 
 OBJ_PATH = ./srcs/
 OBJ_BONUS_PATH = ./srcs_bonus/
