@@ -6,7 +6,7 @@
 #    By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 10:16:41 by lgirard           #+#    #+#              #
-#    Updated: 2025/12/08 13:14:01 by lgirard          ###   ########.fr        #
+#    Updated: 2025/12/09 10:44:50 by lgirard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ ${LIBFT}:
 
 ${NAME} : all
 
-%.o : %.c Makefile
+%.o : %.c Makefile srcs/ft_printf.h srcs_bonus/ft_printf_bonus.h
 	${CC} ${CFLAGS} $< -o $@
 
 .PHONY : all clean fclean re libft
