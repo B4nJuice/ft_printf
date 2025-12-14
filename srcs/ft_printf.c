@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:40:27 by lgirard           #+#    #+#             */
-/*   Updated: 2025/11/20 11:52:00 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/12/14 09:02:34 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_printf(const char *str, ...)
 	va_list	arg_ptr;
 	int		count;
 	int		i;
+	int		j;
 
 	count = 0;
 	i = 0;
@@ -29,13 +30,23 @@ int	ft_printf(const char *str, ...)
 			i += 2 + percent_type(get_flags(str, &i), arg_ptr, &count, str + i);
 		else
 		{
-			ft_swrite(&count, write(1, &str[i], 1));
-			i++;
+			j = next_percent(str, i);
+			ft_swrite(&count, write(1, &str[i], j));
+			i += j;
 		}
 		if (count < 0)
 			return (count);
 	}
 	return (count);
+}
+
+int	next_percent(const char *str, int i)
+{
+	int j;
+	j = 0;
+	while (str[i + j] && str[i + j] != '%')
+		j++;
+	return (j);
 }
 
 int	percent_type(t_flags flags, va_list arg_ptr, int *count, const char *str)

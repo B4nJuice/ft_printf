@@ -6,7 +6,7 @@
 /*   By: lgirard <lgirard@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:27:25 by lgirard           #+#    #+#             */
-/*   Updated: 2025/12/08 12:52:58 by lgirard          ###   ########.fr       */
+/*   Updated: 2025/12/14 09:03:02 by lgirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_flags
 */
 
 int		ft_printf(const char *str, ...);
+int		next_percent(const char *str, int i);
 int		percent_type(t_flags flags, va_list arg_ptr, int *count,\
 		const char *str);
 
